@@ -52,6 +52,7 @@ function Tour({
   maskSpace,
   showCloseButton,
   accessibilityOptions,
+  getCurrentStep,
 }) {
   const [current, setCurrent] = useState(0)
   const [started, setStarted] = useState(false)
@@ -163,15 +164,26 @@ function Tour({
   }
 
   function nextStep() {
-    setCurrent(prev => (prev < steps.length - 1 ? prev + 1 : prev))
+    setCurrent(prev => {
+      
+     let value =  (prev < steps.length - 1 ? prev + 1 : prev));
+       getCurrentStep(value);
+      return value;
+    };
+    getCurrentStep();
   }
 
   function prevStep() {
-    setCurrent(prev => (prev > 0 ? prev - 1 : prev))
+    setCurrent(prev => {
+      let value = (prev > 0 ? prev - 1 : prev))
+     getCurrentStep(value);
+      return value;
+    }
   }
 
   function goTo(step) {
-    setCurrent(step)
+    setCurrent(step);
+    getCurrentStep(step);
   }
 
   async function showStep(nextStep) {
