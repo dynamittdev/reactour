@@ -165,25 +165,23 @@ function Tour({
 
   function nextStep() {
     setCurrent(prev => {
-      
-     let value =  (prev < steps.length - 1 ? prev + 1 : prev);
-       getCurrentStep(value);
-      return value;
-    };
-   
+      let value = prev < steps.length - 1 ? prev + 1 : prev
+      getCurrentStep(value)
+      return value
+    })
   }
 
   function prevStep() {
     setCurrent(prev => {
-      let value = (prev > 0 ? prev - 1 : prev);
-     getCurrentStep(value);
-      return value;
-    }
+      let value = prev > 0 ? prev - 1 : prev
+      getCurrentStep(value)
+      return value
+    })
   }
 
   function goTo(step) {
-    setCurrent(step);
-    getCurrentStep(step);
+    setCurrent(step)
+    getCurrentStep(step)
   }
 
   async function showStep(nextStep) {
